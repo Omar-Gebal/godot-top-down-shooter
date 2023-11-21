@@ -1,22 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://cny71opb2dr46"]
+[gd_scene load_steps=5 format=3 uid="uid://cny71opb2dr46"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_gle83"]
 [ext_resource type="PackedScene" uid="uid://bmgds28sjxjkw" path="res://scenes/player/player.tscn" id="2_jdh8p"]
-[ext_resource type="PackedScene" uid="uid://b8be4ryxv5j45" path="res://scenes/box/box.tscn" id="4_g6jf1"]
-[ext_resource type="PackedScene" uid="uid://cxjdgq3pg1712" path="res://scenes/bed/bed.tscn" id="5_53cd2"]
-[ext_resource type="PackedScene" uid="uid://bt5tqrbvott0x" path="res://scenes/drone/drone.tscn" id="5_ihnt3"]
+[ext_resource type="Texture2D" uid="uid://daybjcg0273cu" path="res://graphics/objects/gate.png" id="3_ahb3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5nvn"]
+size = Vector2(848, 276)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_gle83")
 
-[node name="Bed" parent="." instance=ExtResource("5_53cd2")]
-position = Vector2(331, 219)
+[node name="Gate" type="StaticBody2D" parent="."]
+
+[node name="GateImage" type="Sprite2D" parent="Gate"]
+position = Vector2(502, -528)
+texture = ExtResource("3_ahb3t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gate"]
+polygon = PackedVector2Array(-937, -1304, -937, 4, -912, 107, -865, 168, -797, 224, -705, 256, 131, 248, 131, -188, 1001, -181, 996, 248, 1838, 247, 1954, 205, 2023, 128, 2054, 46, 2071, -56, 2061, -1308)
+
+[node name="Area2D" type="Area2D" parent="Gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
+position = Vector2(561, 193)
+shape = SubResource("RectangleShape2D_g5nvn")
 
 [node name="Player" parent="." instance=ExtResource("2_jdh8p")]
 position = Vector2(705, 475)
 
-[node name="Box" parent="." instance=ExtResource("4_g6jf1")]
-position = Vector2(923, 162)
-
-[node name="Drone" parent="." instance=ExtResource("5_ihnt3")]
-position = Vector2(156, 527)
+[connection signal="body_entered" from="Gate/Area2D" to="." method="_on_area_2d_body_entered"]
