@@ -1,11 +1,12 @@
-extends Node2D
+extends CharacterBody2D
 
 var speed: int = 500
 
-func _process(delta):
+func _process(_delta):
 	#movement
 	var direction : Vector2 = Input.get_vector("left","right","up","down")
-	position += direction * speed * delta
+	velocity = direction * speed
+	move_and_slide()
 	#shooting
 	if Input.is_action_just_pressed("primary action"):
 		print("pew")

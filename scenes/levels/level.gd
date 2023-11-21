@@ -7,7 +7,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$Logo.rotation_degrees += 500 * delta
-	if $Logo.position.x > 1000:
-		$Logo.pos.x = 0
+#func _process(delta):
+#	pass
