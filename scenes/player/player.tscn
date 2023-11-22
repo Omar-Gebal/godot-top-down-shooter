@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmgds28sjxjkw"]
+[gd_scene load_steps=8 format=3 uid="uid://bmgds28sjxjkw"]
 
 [ext_resource type="Texture2D" uid="uid://brjljg3mnh1i1" path="res://graphics/player/player.png" id="1_ft0sy"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qsi4a"]
+[ext_resource type="Texture2D" uid="uid://jn32hyou4510" path="res://graphics/decals/white.png" id="3_oqipp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4m21"]
 radius = 57.0
+
+[sub_resource type="Gradient" id="Gradient_15eud"]
+colors = PackedColorArray(0, 1, 1, 1, 0.466667, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_krrpl"]
+gradient = SubResource("Gradient_15eud")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xl763"]
+particle_flag_disable_z = true
+spread = 80.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 700.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.6
+color_ramp = SubResource("GradientTexture1D_krrpl")
+hue_variation_max = 0.04
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
@@ -36,6 +56,15 @@ position = Vector2(131, 13)
 
 [node name="Marker2D3" type="Marker2D" parent="ProjectileStartPositions"]
 position = Vector2(131, 34)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(135, 24)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_xl763")
+texture = ExtResource("3_oqipp")
+lifetime = 0.1
+one_shot = true
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="GrenadeTimer" to="." method="_on_grenade_timer_timeout"]
