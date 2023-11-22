@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmgds28sjxjkw"]
+[gd_scene load_steps=9 format=3 uid="uid://bmgds28sjxjkw"]
 
 [ext_resource type="Texture2D" uid="uid://brjljg3mnh1i1" path="res://graphics/player/player.png" id="1_ft0sy"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qsi4a"]
 [ext_resource type="Texture2D" uid="uid://jn32hyou4510" path="res://graphics/decals/white.png" id="3_oqipp"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4nuvt"]
+polygon = PackedVector2Array(-13, 64, -28, 61, -34, 50, -40, 43, -40, 37, -44, 33, -50, 25, -48, 22, -48, 18, -55, 12, -57, -3, -56, -6, -55, -18, -49, -26, -48, -35, -39, -41, -27, -43, -25, -42, -24, -43, -24, -47, -13, -53, -8, -51, 1, -56, 11, -55, 13, -53, 20, -57, 30, -57, 37, -49, 39, -44, 47, -38, 48, -35, 50, -29, 53, -26, 56, -24, 65, -21, 72, -14, 78, -8, 86, -7, 91, -8, 97, -5, 100, -2, 103, 0, 108, 0, 113, 2, 115, 5, 117, 6, 121, 6, 125, 6, 127, 6, 127, 9, 126, 11, 128, 11, 130, 9, 134, 10, 136, 15, 137, 22, 137, 29, 134, 34, 132, 37, 128, 37, 125, 34, 123, 35, 125, 38, 125, 40, 121, 41, 114, 42, 112, 39, 106, 45, 100, 48, 99, 54, 96, 58, 65, 57, 62, 51, 64, 46, 55, 45, 49, 45, 45, 45, 42, 47, 30, 51, 26, 51, 21, 55, 15, 59, 5, 63, -3, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k4m21"]
 radius = 57.0
@@ -29,6 +32,9 @@ hue_variation_max = 0.04
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_qsi4a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_4nuvt")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
 position = Vector2(40, 4)
