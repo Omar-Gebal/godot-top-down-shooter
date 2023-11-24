@@ -3,9 +3,11 @@ extends CharacterBody2D
 signal laser(pos : Vector2, direction: Vector2)
 signal grenade(pos : Vector2, direction: Vector2)
 
-const speed: int = 500
 var can_laser:bool = true
 var can_grenade:bool = true
+
+@export var max_speed: int = 500
+var speed: int = max_speed
 
 func _process(_delta):
 	#movement

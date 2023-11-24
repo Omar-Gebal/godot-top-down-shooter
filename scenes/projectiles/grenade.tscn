@@ -164,7 +164,7 @@ libraries = {
 color = Color(1, 0, 0, 1)
 energy = 0.0
 texture = ExtResource("4_mc2wb")
-texture_scale = 0.05
+texture_scale = 0.1
 
 [node name="GrenadeImage" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
