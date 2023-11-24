@@ -25,6 +25,7 @@ func _process(_delta):
 		var selected_marker = laser_markers[randi() % laser_markers.size()]
 		var player_direction = (get_global_mouse_position() - position).normalized()
 		laser.emit(selected_marker.global_position, player_direction)
+		
 		$LaserTimer.start()
 		$GPUParticles2D.emitting = true
 	#grenade
