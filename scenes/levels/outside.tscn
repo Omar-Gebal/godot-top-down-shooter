@@ -107,4 +107,6 @@ frame_progress = 0.189264
 [node name="Gate" parent="." index="1" instance=ExtResource("2_4jbjl")]
 position = Vector2(543, -768)
 
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
 [connection signal="body_entered" from="Gate" to="." method="_on_gate_body_entered"]
