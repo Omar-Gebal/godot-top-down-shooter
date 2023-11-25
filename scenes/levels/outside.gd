@@ -3,6 +3,7 @@ extends LevelParent
 func _on_gate_body_entered(_body):
 	var tween = create_tween()
 	tween.tween_property($Player, "speed", 0, 0.5)
+	get_tree().change_scene_to_file("res://scenes/levels/inside.tscn")
 
 var zoom_in_value : Vector2 = Vector2(0.8,0.8)
 var zoom_out_value: Vector2 = Vector2(0.5,0.5)
