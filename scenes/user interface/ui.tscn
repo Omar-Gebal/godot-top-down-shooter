@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b78sxex7pbfpc"]
+
+[ext_resource type="Texture2D" uid="uid://ddhcecpbs17ce" path="res://graphics/ui/bullet.png" id="1_l5ts8"]
+[ext_resource type="Theme" uid="uid://bvmh6006dkvep" path="res://scenes/user interface/main_theme.tres" id="1_wtnnq"]
+[ext_resource type="Texture2D" uid="uid://dfwgguce828a0" path="res://graphics/ui/grenade.png" id="2_mddaq"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="BulletCounter" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.99
+anchor_right = 0.01
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="BulletCounter"]
+layout_mode = 2
+theme = ExtResource("1_wtnnq")
+text = "20"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BulletCounter"]
+layout_mode = 2
+texture = ExtResource("1_l5ts8")
+expand_mode = 4
+
+[node name="GrenadeCounter" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.95
+anchor_right = 0.055
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GrenadeCounter"]
+layout_mode = 2
+theme = ExtResource("1_wtnnq")
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GrenadeCounter"]
+layout_mode = 2
+texture = ExtResource("2_mddaq")
+expand_mode = 4
