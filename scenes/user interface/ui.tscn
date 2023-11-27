@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b78sxex7pbfpc"]
+[gd_scene load_steps=6 format=3 uid="uid://b78sxex7pbfpc"]
 
 [ext_resource type="Texture2D" uid="uid://ddhcecpbs17ce" path="res://graphics/ui/bullet.png" id="1_l5ts8"]
 [ext_resource type="Theme" uid="uid://bvmh6006dkvep" path="res://scenes/user interface/main_theme.tres" id="1_wtnnq"]
 [ext_resource type="Texture2D" uid="uid://dfwgguce828a0" path="res://graphics/ui/grenade.png" id="2_mddaq"]
+[ext_resource type="Texture2D" uid="uid://vpfkqrgyx6gf" path="res://graphics/ui/progress_bar/bg.png" id="4_8i3gr"]
+[ext_resource type="Texture2D" uid="uid://brw2nk54r8m8" path="res://graphics/ui/progress_bar/progress.png" id="5_0se0u"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -36,6 +38,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
+alignment = 1
 
 [node name="Label" type="Label" parent="GrenadeCounter"]
 layout_mode = 2
@@ -47,3 +50,23 @@ horizontal_alignment = 1
 layout_mode = 2
 texture = ExtResource("2_mddaq")
 expand_mode = 4
+
+[node name="Health" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health"]
+layout_mode = 2
+size_flags_horizontal = 4
+value = 20.0
+texture_under = ExtResource("4_8i3gr")
+texture_progress = ExtResource("5_0se0u")
