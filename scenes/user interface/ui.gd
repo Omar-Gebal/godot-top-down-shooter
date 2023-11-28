@@ -8,10 +8,18 @@ extends CanvasLayer
 @onready var grenade_label : Label = $GrenadeCounter/Label
 @onready var laser_icon : TextureRect = $BulletCounter/TextureRect
 @onready var grenade_icon : TextureRect = $GrenadeCounter/TextureRect
+@onready var health_bar : TextureProgressBar = $Health/TextureProgressBar
 
 func _ready():
+	Globals.connect("laser_amount_change", update_laser)
+	Globals.connect("grenade_amount_change", update_grenade)
+	Globals.connect("health_change", update_health)
 	update_laser()
 	update_grenade()
+	update_health()
+
+func update_health():
+	health_bar.value = Globals.health
 
 func update_laser():
 	laser_label.text = str(Globals.laser_amount)

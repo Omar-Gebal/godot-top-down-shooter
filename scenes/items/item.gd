@@ -9,9 +9,9 @@ var type : String = options[0] if randf() <= laser_likelyhood else options[randi
 func _ready():
 	if type == 'laser':
 		$Sprite2D.modulate = Color(0,0.4,0.8)
-	if type == 'grenade':
+	elif type == 'grenade':
 		$Sprite2D.modulate = Color(0.8,0.2,0.2)
-	if type == 'health':
+	elif type == 'health':
 		$Sprite2D.modulate = Color(0.1,0.6,0.2)
 
 func _process(delta):
@@ -19,5 +19,11 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	body.add_item(type)
+	if type == 'laser':
+		Globals.laser_amount += 5
+	elif type == 'grenade':
+		Globals.grenade_amount += 1
+	elif type == 'health':
+		Globals.health += min(Globals.health + 10, 100)
+		
 	queue_free()
